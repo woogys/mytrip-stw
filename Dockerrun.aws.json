@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "267429925503.dkr.ecr.ap-northeast-2.amazonaws.com/mytrip-app",
+    "Name": "661590323761.dkr.ecr.ap-northeast-2.amazonaws.com/mytrips-stw",
     "Update": "true"
   },
   "Ports": [

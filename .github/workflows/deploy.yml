@@ -2,7 +2,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - deploy
+      - main
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
@@ -37,7 +37,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: mytrip-app
+          ECR_REPOSITORY: mytrips-stw
           IMAGE_TAG: latest
         run: |
           docker buildx build --platform=linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
@@ -63,8 +63,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: ebmytrip
-          environment_name: ebmytrip-env
+          application_name: ebmytrips-stw
+          environment_name: Ebmytripsstw-env
           version_label: earth-docker-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-2
           deployment_package: deploy/deploy.zip
